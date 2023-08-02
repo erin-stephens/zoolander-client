@@ -1,9 +1,6 @@
 import React from 'react';
+import StudentForm from '../../components/forms/StudentForm';
 
-export default function AssignmentForm() {
-  return (
-    <div>
-      Education
-    </div>
-  );
+export default function AddStudent() {
+  return <StudentForm />;
 }
