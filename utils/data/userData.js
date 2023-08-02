@@ -1,9 +1,19 @@
-import React from 'react';
+/* eslint-disable implicit-arrow-linebreak */
+import { clientCredentials } from '../client';
 
-export default function AssignmentForm() {
-  return (
-    <div>
-      Education
-    </div>
-  );
-}
+const endpoint = clientCredentials.databaseURL;
+
+const getUserData = (uid) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/teachers.json?orderBy="uid"&equalTo="${uid}"`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(Object.values(data)))
+      .catch(reject);
+  });
+
+export default getUserData;
