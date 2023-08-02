@@ -20,17 +20,20 @@ export default function NavBar() {
             <Link passHref href="/">
               <a className="nav-link">Home</a>
             </Link>
-            <Link passHref href="/class">
+            <Link passHref href="/classes">
               <a className="nav-link">Classes</a>
             </Link>
-            <Link passHref href="/assignment">
+            <Link passHref href="/assignments">
               <a className="nav-link">Assignments</a>
             </Link>
-            <Link passHref href="/student">
+            <Link passHref href="/students">
               <a className="nav-link">Students</a>
             </Link>
             <Link passHref href="/remembrance">
               <a className="nav-link">Remembrance</a>
+            </Link>
+            <Link passHref href="/userprofile">
+              <a className="nav-link">User Profile</a>
             </Link>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
