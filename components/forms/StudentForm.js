@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { FloatingLabel } from 'react-bootstrap';
-import { Button, Form } from 'bootstrap';
+import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { createStudent, updateStudent } from '../../utils/data/studentData';
 
 const initialState = {
@@ -72,14 +71,14 @@ function StudentForm({ obj }) {
         <Form.Control
           type="url"
           placeholder="Add Student image URL"
-          name="image"
+          name="image_url"
           value={formInput.image_url}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Book</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Student</Button>
     </Form>
   );
 }
