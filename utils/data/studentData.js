@@ -26,7 +26,7 @@ const deleteStudent = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleStudents = (firebaseKey) => new Promise((resolve, reject) => {
+const getSingleStudent = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/students/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -67,7 +67,7 @@ const updateStudent = (payload) => new Promise((resolve, reject) => {
 export {
   getStudents,
   deleteStudent,
-  getSingleStudents,
+  getSingleStudent,
   createStudent,
   updateStudent,
 };
