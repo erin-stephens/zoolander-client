@@ -21,3 +21,9 @@ body {
   color: rgb(216, 211, 203);
   background-color: #a667a9;
 }
+
+.student-card {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  box-shadow: 5px 5px 15px black;
+}
