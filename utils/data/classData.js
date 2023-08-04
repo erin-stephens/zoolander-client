@@ -17,6 +17,19 @@ const createClass = (payload) =>
       .then((data) => resolve(data))
       .catch(reject);
   });
+// GET CLASSES
+const getClasses = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/classes.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(Object.values(data)))
+      .catch(reject);
+  });
 
 // GET SINGLE CLASS
 const getSingleClass = (firebaseKey) =>
@@ -62,4 +75,4 @@ const updateClass = (payload) =>
   });
 
 // eslint-disable-next-line object-curly-newline
-export { createClass, getSingleClass, deleteSingleClass, updateClass };
+export { createClass, getSingleClass, deleteSingleClass, updateClass, getClasses };

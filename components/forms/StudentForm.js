@@ -46,36 +46,15 @@ function StudentForm({ obj }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Student</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Student Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter Student Full Name"
-          name="student_full_name"
-          value={formInput.student_full_name}
-          onChange={handleChange}
-          required
-        />
+        <Form.Control type="text" placeholder="Enter Student Full Name" name="student_full_name" value={formInput.student_full_name} onChange={handleChange} required />
       </FloatingLabel>
 
       <FloatingLabel controlId="floatingInput2" label="Student Age" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter Student Age"
-          name="age"
-          value={formInput.age}
-          onChange={handleChange}
-          required
-        />
+        <Form.Control type="text" placeholder="Enter Student Age" name="age" value={formInput.age} onChange={handleChange} required />
       </FloatingLabel>
 
       <FloatingLabel controlId="floatingInput3" label="Student Image" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Add Student image URL"
-          name="image_url"
-          value={formInput.image_url}
-          onChange={handleChange}
-          required
-        />
+        <Form.Control type="url" placeholder="Add Student image URL" name="image_url" value={formInput.image_url} onChange={handleChange} required />
       </FloatingLabel>
 
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Student</Button>

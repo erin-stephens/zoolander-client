@@ -1,9 +1,6 @@
 import React from 'react';
+import CardForm from '../../components/forms/ClassForm';
 
-export default function AssignmentForm() {
-  return (
-    <div>
-      Education
-    </div>
-  );
+export default function New() {
+  return <CardForm />;
 }
