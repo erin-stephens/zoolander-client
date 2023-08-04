@@ -54,7 +54,7 @@ function ClassForm({ obj }) {
 
       {/* CLASS NAME INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Class Name" className="mb-3">
-        <Form.Control type="text" placeholder="Enter Class Name" name="class_name" value={formInput.title} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="Enter Class Name" name="class_name" value={formInput.class_name} onChange={handleChange} required />
       </FloatingLabel>
 
       {/* DESCRIPTION TEXTAREA  */}
