@@ -15,7 +15,14 @@ function StudentForm({ obj }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (obj.id) setCurrentStudent(obj);
+    if (obj.id) {
+      setCurrentStudent({
+        id: obj.id,
+        studentFullName: obj.student_full_name,
+        imageUrl: obj.image_url,
+        age: obj.age,
+      });
+    }
   }, [obj]);
 
   const handleChange = (e) => {

@@ -7,11 +7,11 @@ export default function ViewStudent() {
   const [studentDetails, setStudentDetails] = useState([]);
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleStudent(firebaseKey).then(setStudentDetails);
-  }, [firebaseKey]);
+    getSingleStudent(id).then(setStudentDetails);
+  }, [id]);
 
   return (
     <>
