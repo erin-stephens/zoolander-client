@@ -18,7 +18,7 @@ export default function Assignments() {
   return (
     <div className="text-center my-4">
       <Link href="/assignment/new" passHref>
-        <Button>Add An Assignemt</Button>
+        <Button>Add An Assignment</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {/* TODO: map over books here using BookCard component */}
