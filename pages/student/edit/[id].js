@@ -7,11 +7,11 @@ export default function EditStudent() {
   const [editStudent, setEditStudent] = useState({});
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleStudent(firebaseKey).then(setEditStudent);
-  }, [firebaseKey]);
+    getSingleStudent(id).then(setEditStudent);
+  }, [id]);
 
   return (<StudentForm obj={editStudent} />);
 }

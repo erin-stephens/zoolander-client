@@ -19,7 +19,7 @@ export default function NavBar() {
             <Link passHref href="/">
               <a className="nav-link">Home</a>
             </Link>
-            <Link passHref href="/classes">
+            <Link passHref href="/classrooms">
               <a className="nav-link">Classes</a>
             </Link>
             <Link passHref href="/assignments">
