@@ -69,7 +69,7 @@ function ClassForm({ obj }) {
           name="teacherId"
           onChange={handleChange}
           className="mb-3"
-          value={obj.teacherId} // FIXME: modify code to remove error
+          value={formInput.teacherId}
           required
         >
           <option value="">Select an Teacher</option>
