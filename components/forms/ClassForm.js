@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { useAuth } from '../../utils/context/authContext';
+// import { useAuth } from '../../utils/context/authContext';
 import getUserData from '../../utils/data/userData';
 import { createClassroom, updateClassroom } from '../../utils/data/classroomData';
 
@@ -17,11 +17,10 @@ function ClassForm({ obj }) {
   const [currentClassroom, setCurrentClassroom] = useState(initialState);
   const [teachers, setTeachers] = useState([]);
   const router = useRouter();
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   useEffect(() => {
     getUserData().then(setTeachers);
-    console.warn(teachers);
 
     if (obj.id) {
       setCurrentClassroom({
@@ -31,7 +30,7 @@ function ClassForm({ obj }) {
         className: obj.class_name,
       });
     }
-  }, [obj, user]);
+  }, [obj, teachers]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,7 +79,7 @@ function ClassForm({ obj }) {
           <option value="">Select an Teacher</option>
           {teachers.map((teacher) => (
             <option key={teacher.id} value={teacher.id}>
-              {teacher.uid}
+              {teacher.id}
             </option>
           ))}
         </Form.Select>
