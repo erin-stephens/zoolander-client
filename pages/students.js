@@ -21,9 +21,8 @@ function Students() {
         <Button>Add A Student</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {/* TODO: map over books here using BookCard component */}
         {students.map((student) => (
-          <StudentCard key={student.firebaseKey} studentObj={student} onUpdate={getAllTheStudents} />
+          <StudentCard key={student.id} studentObj={student} onUpdate={getAllTheStudents} />
         ))}
       </div>
 

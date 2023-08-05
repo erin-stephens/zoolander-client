@@ -3,7 +3,7 @@ import { clientCredentials } from '../client';
 const endpoint = clientCredentials.databaseURL;
 
 const getStudents = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/students.json`, {
+  fetch(`${endpoint}/students`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -14,20 +14,19 @@ const getStudents = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteStudent = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/students/${firebaseKey}.json`, {
+const deleteStudent = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/students/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
   })
-    .then((response) => response.json())
     .then((data) => resolve((data)))
     .catch(reject);
 });
 
-const getSingleStudents = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/students/${firebaseKey}.json`, {
+const getSingleStudent = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/students/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -38,28 +37,27 @@ const getSingleStudents = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createStudent = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/students.json`, {
+const createStudent = (student) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/students`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(student),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
 
-const updateStudent = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/students/${payload.firebaseKey}.json`, {
-    method: 'PATCH',
+const updateStudent = (student) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/students/${student.id}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(student),
   })
-    .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
@@ -67,7 +65,7 @@ const updateStudent = (payload) => new Promise((resolve, reject) => {
 export {
   getStudents,
   deleteStudent,
-  getSingleStudents,
+  getSingleStudent,
   createStudent,
   updateStudent,
 };

@@ -11,16 +11,16 @@ const initialState = {
 };
 
 function StudentForm({ obj }) {
-  const [formInput, setFormInput] = useState(initialState);
+  const [currentStudent, setCurrentStudent] = useState(initialState);
   const router = useRouter();
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
+    if (obj.id) setCurrentStudent(obj);
   }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormInput((prevState) => ({
+    setCurrentStudent((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -28,29 +28,26 @@ function StudentForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
-      updateStudent(formInput).then(() => router.push(`/student/${obj.firebaseKey}`));
+    if (obj.id) {
+      const studentUpdate = { ...currentStudent };
+      updateStudent(studentUpdate).then(() => router.push(`/student/${obj.id}`));
     } else {
-      const payload = { ...formInput };
-      createStudent(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateStudent(patchPayload).then(() => {
-          router.push('/students');
-        });
-      });
+      const student = { ...currentStudent };
+      createStudent(student)
+        .then(() => router.push('/students/'));
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Student</h2>
+      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Student</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Student Name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter Student Full Name"
-          name="student_full_name"
-          value={formInput.student_full_name}
+          name="studentFullName"
+          value={currentStudent.studentFullName}
           onChange={handleChange}
           required
         />
@@ -61,7 +58,7 @@ function StudentForm({ obj }) {
           type="text"
           placeholder="Enter Student Age"
           name="age"
-          value={formInput.age}
+          value={currentStudent.age}
           onChange={handleChange}
           required
         />
@@ -71,14 +68,14 @@ function StudentForm({ obj }) {
         <Form.Control
           type="url"
           placeholder="Add Student image URL"
-          name="image_url"
-          value={formInput.image_url}
+          name="imageUrl"
+          value={currentStudent.imageUrl}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Student</Button>
+      <Button type="submit">{obj.id ? 'Update' : 'Create'} Student</Button>
     </Form>
   );
 }
@@ -88,7 +85,7 @@ StudentForm.propTypes = {
     student_full_name: PropTypes.string,
     age: PropTypes.string,
     image_url: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    id: PropTypes.number,
   }),
 };
 
