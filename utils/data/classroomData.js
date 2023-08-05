@@ -4,23 +4,22 @@ import { clientCredentials } from '../client';
 const endpoint = clientCredentials.databaseURL;
 
 // CREATE CLASS
-const createClass = (payload) =>
+const createClassroom = (classroom) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classes.json`, {
+    fetch(`${endpoint}/classrooms`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(classroom),
     })
-      .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
   });
 // GET CLASSES
-const getClasses = () =>
+const getClassrooms = () =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classes.json`, {
+    fetch(`${endpoint}/classrooms`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,9 +31,9 @@ const getClasses = () =>
   });
 
 // GET SINGLE CLASS
-const getSingleClass = (firebaseKey) =>
+const getSingleClassroom = (id) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classes/${firebaseKey}.json`, {
+    fetch(`${endpoint}/classrooms/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -46,33 +45,31 @@ const getSingleClass = (firebaseKey) =>
   });
 
 // DELETE SINGLE CLASS
-const deleteSingleClass = (firebaseKey) =>
+const deleteSingleClassroom = (id) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classes/${firebaseKey}.json`, {
+    fetch(`${endpoint}/classrooms/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
   });
 
 // UPDATE CLASS
-const updateClass = (payload) =>
+const updateClassroom = (classroom) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classes/${payload.firebaseKey}.json`, {
-      method: 'PATCH',
+    fetch(`${endpoint}/classrooms/${classroom.id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(classroom),
     })
-      .then((response) => response.json())
       .then(resolve)
       .catch(reject);
   });
 
 // eslint-disable-next-line object-curly-newline
-export { createClass, getSingleClass, deleteSingleClass, updateClass, getClasses };
+export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom, getClassrooms };

@@ -21,7 +21,6 @@ export default function Assignments() {
         <Button>Add An Assignment</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {/* TODO: map over books here using BookCard component */}
         {assignments.map((assignment) => (
           <AssignmentCard key={assignment.firebaseKey} assignmentObj={assignment} onUpdate={getAllAssignments} />
         ))}

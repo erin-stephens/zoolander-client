@@ -22,7 +22,7 @@ function Students() {
       </Link>
       <div className="d-flex flex-wrap">
         {students.map((student) => (
-          <StudentCard key={student.firebaseKey} studentObj={student} onUpdate={getAllTheStudents} />
+          <StudentCard key={student.id} studentObj={student} onUpdate={getAllTheStudents} />
         ))}
       </div>
 

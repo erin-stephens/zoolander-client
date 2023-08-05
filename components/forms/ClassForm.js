@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import getUserData from '../../utils/data/userData';
-import { createClass, updateClass } from '../../utils/data/classData';
+import { createClassroom, updateClassroom } from '../../utils/data/classroomData';
 
 const initialState = {
   description: '',
@@ -36,12 +36,12 @@ function ClassForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateClass(formInput).then(() => router.push(`/class/${obj.firebaseKey}`));
+      updateClassroom(formInput).then(() => router.push(`/class/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput };
-      createClass(payload).then(({ name }) => {
+      createClassroom(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateClass(patchPayload).then(() => {
+        updateClassroom(patchPayload).then(() => {
           router.push('/classes');
         });
       });

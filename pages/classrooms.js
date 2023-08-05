@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import ClassCard from '../components/cards/ClassCard';
-import { getClasses } from '../utils/data/classData';
+import { getClassrooms } from '../utils/data/classroomData';
 
 export default function Classes() {
   const [classrooms, setClassroom] = useState([]);
 
   const getAllTheClasses = () => {
-    getClasses().then(setClassroom);
+    getClassrooms().then(setClassroom);
   };
 
   useEffect(() => {

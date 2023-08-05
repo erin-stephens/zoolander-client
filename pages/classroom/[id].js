@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getSingleClass } from '../../utils/data/classData';
+import { getSingleClassroom } from '../../utils/data/classroomData';
 
 export default function ViewClass() {
   const [classDetails, setClassDetails] = useState([]);
@@ -9,7 +9,7 @@ export default function ViewClass() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getSingleClass(firebaseKey).then(setClassDetails);
+    getSingleClassroom(firebaseKey).then(setClassDetails);
   }, [firebaseKey]);
   return (
     <>

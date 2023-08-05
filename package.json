@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "zoolander-school",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Kyle Berry, Michael Brantley, Charles Bridgers IV, Erin Stephens",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
