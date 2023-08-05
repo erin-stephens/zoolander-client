@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import ClassCard from '../../components/cards/ClassCard';
-import { getClassrooms } from '../../utils/data/classroomData';
+import ClassCard from '../components/cards/ClassCard';
+import { getClassrooms } from '../utils/data/classroomData';
 
 export default function Classes() {
   const [classrooms, setClassroom] = useState([]);

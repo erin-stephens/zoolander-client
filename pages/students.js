@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { getStudents } from '../../utils/data/studentData';
-import StudentCard from '../../components/cards/StudentCard';
+import { getStudents } from '../utils/data/studentData';
+import StudentCard from '../components/cards/StudentCard';
 
 function Students() {
   const [students, setStudents] = useState([]);

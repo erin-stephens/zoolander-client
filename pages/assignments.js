@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { getAssignments } from '../../utils/data/assignmentData';
-import AssignmentCard from '../../components/cards/AssignmentCard';
+import { getAssignments } from '../utils/data/assignmentData';
+import AssignmentCard from '../components/cards/AssignmentCard';
 
 export default function Assignments() {
   const [assignments, setAssignments] = useState([]);
