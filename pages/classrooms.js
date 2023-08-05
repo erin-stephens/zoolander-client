@@ -17,7 +17,7 @@ export default function Classes() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/class/new" passHref>
+      <Link href="/classroom/new" passHref>
         <Button>Add A Class</Button>
       </Link>
       <div className="d-flex flex-wrap">
