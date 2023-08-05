@@ -12,7 +12,7 @@ function StudentCard({ studentObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card style={{ width: '18rem', margin: '10px' }} className="student-card">
       <Card.Img variant="top" src={studentObj.image_url} alt={studentObj.student_full_name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{studentObj.student_full_name}</Card.Title>

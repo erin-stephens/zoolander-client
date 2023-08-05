@@ -6,7 +6,7 @@ const endpoint = clientCredentials.databaseURL;
 // CREATE CLASS
 const createClassroom = (classroom) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classes`, {
+    fetch(`${endpoint}/classrooms`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,6 +14,19 @@ const createClassroom = (classroom) =>
       body: JSON.stringify(classroom),
     })
       .then((data) => resolve(data))
+      .catch(reject);
+  });
+// GET CLASSES
+const getClassrooms = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/classrooms`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(Object.values(data)))
       .catch(reject);
   });
 
@@ -59,4 +72,4 @@ const updateClassroom = (classroom) =>
   });
 
 // eslint-disable-next-line object-curly-newline
-export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom };
+export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom, getClassrooms };
