@@ -7,7 +7,7 @@ export default function UserProfile() {
 
   const profileContainer = {
     textAlign: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'gray',
     borderRadius: '8px',
     maxWidth: '275px',
     margin: '0 auto',
@@ -38,7 +38,7 @@ export default function UserProfile() {
   const profileLastLogin = {
     position: 'relative',
     fontSize: '10px',
-    color: 'grey',
+    color: 'white',
     top: '-10px',
   };
 
