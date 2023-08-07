@@ -2,33 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
-import getUserData from '../../utils/data/userData';
 import { createAssignment, updateAssignment } from '../../utils/data/assignmentData';
 import getClassrooms from '../../utils/data/classroomData';
+import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   title: '',
   imageUrl: '',
   content: '',
-  teacherId: 0,
+  teacherId: '',
   classId: 0,
 };
 
 function AssignmentForm({ obj }) {
   const [currentAssignment, setCurrentAssignment] = useState(initialState);
-  const [teachers, setTeachers] = useState([]);
   const [classrooms, setClassrooms] = useState([]);
   const router = useRouter();
+  const { user } = useAuth();
 
   useEffect(() => {
-    getUserData().then(setTeachers);
     getClassrooms().then(setClassrooms);
     if (obj.id) {
       setCurrentAssignment({
         id: obj.id,
         title: obj.title,
         content: obj.content,
-        teacherId: obj.teacherId?.id,
+        teacherId: user.uid,
         classId: obj.classId?.id,
       });
     }
@@ -49,7 +48,7 @@ function AssignmentForm({ obj }) {
         id: obj.id,
         title: currentAssignment.title,
         content: currentAssignment.content,
-        teacherId: currentAssignment.teacherId,
+        teacherId: user.uid,
         classId: currentAssignment.classId,
       };
       updateAssignment(assignmentUpdate).then(() => router.push('/assignments'));
@@ -58,7 +57,7 @@ function AssignmentForm({ obj }) {
         id: obj.id,
         title: currentAssignment.title,
         content: currentAssignment.content,
-        teacherId: currentAssignment.teacherId,
+        teacherId: user.uid,
         classId: currentAssignment.classId,
       };
       createAssignment(assignment).then(() => router.push('/assignments'));
@@ -103,28 +102,6 @@ function AssignmentForm({ obj }) {
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingSelect" label="Teacher">
-        <Form.Select
-          aria-label="Teacher"
-          name="teacherId"
-          onChange={handleChange}
-          className="mb-3"
-          value={currentAssignment.teacherId}
-          required
-        >
-          <option value="">Select a Teacher</option>
-          {
-            teachers.map((teacher) => (
-              <option
-                key={teacher.id}
-                value={teacher.id}
-              >
-                {teacher.full_name}
-              </option>
-            ))
-          }
-        </Form.Select>
-      </FloatingLabel>
       <FloatingLabel controlId="floatingSelect" label="Classroom">
         <Form.Select
           aria-label="Classroom"
