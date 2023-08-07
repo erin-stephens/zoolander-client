@@ -5,14 +5,14 @@ const endpoint = clientCredentials.databaseURL;
 
 const getUserData = () =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/teachers.json`, {
+    fetch(`${endpoint}/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((response) => response.json())
-      .then((data) => resolve(Object.values(data)))
+      .then((data) => resolve(Object.keys(data)))
       .catch(reject);
   });
 

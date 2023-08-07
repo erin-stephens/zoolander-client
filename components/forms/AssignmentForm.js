@@ -13,11 +13,10 @@ const initialState = {
 
 function AssignmentForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  const [teachers, setTeachers] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    getUserData().then(setTeachers);
+    getUserData().then();
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj]);
@@ -83,28 +82,6 @@ function AssignmentForm({ obj }) {
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingSelect" label="Teacher">
-        <Form.Select
-          aria-label="Teacher"
-          name="teacherId"
-          onChange={handleChange}
-          className="mb-3"
-          value={formInput.teacherId}
-          required
-        >
-          <option value="">Select a Teacher</option>
-          {
-            teachers.map((teacher) => (
-              <option
-                key={teacher.firebaseKey}
-                value={teacher.firebaseKey}
-              >
-                {teacher.full_name}
-              </option>
-            ))
-          }
-        </Form.Select>
-      </FloatingLabel>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Assignment</Button>
     </Form>
   );

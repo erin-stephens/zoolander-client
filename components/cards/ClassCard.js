@@ -17,12 +17,12 @@ function ClassCard({ classObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{classObj.class_name}</Card.Title>
         <Card.Title>{classObj.description}</Card.Title>
-        <Link href={`/class/${classObj.id}`} passHref>
+        <Link href={`/classroom/${classObj.id}`} passHref>
           <Button variant="primary" className="m-2">
             VIEW
           </Button>
         </Link>
-        <Link href={`/class/edit/${classObj.id}`} passHref>
+        <Link href={`/classroom/edit/${classObj.id}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisClass} className="m-2">

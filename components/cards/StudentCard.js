@@ -19,7 +19,6 @@ function StudentCard({ studentObj, onUpdate }) {
         <Link href={`/student/${studentObj.id}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
-        {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
         <Link href={`/student/edit/${studentObj.id}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
