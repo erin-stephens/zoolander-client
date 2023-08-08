@@ -22,7 +22,7 @@ export default function Assignments() {
       </Link>
       <div className="d-flex flex-wrap">
         {assignments.map((assignment) => (
-          <AssignmentCard key={assignment.firebaseKey} assignmentObj={assignment} onUpdate={getAllAssignments} />
+          <AssignmentCard key={assignment.id} assignmentObj={assignment} onUpdate={getAllAssignments} />
         ))}
       </div>
 

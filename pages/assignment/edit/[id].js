@@ -6,11 +6,11 @@ import AssignmentForm from '../../../components/forms/AssignmentForm';
 export default function EditAssignment() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleAssignment(firebaseKey).then(setEditItem);
-  }, [firebaseKey]);
+    getSingleAssignment(id).then(setEditItem);
+  }, [id]);
 
   return (<AssignmentForm obj={editItem} />);
 }
