@@ -6,7 +6,7 @@ import React from 'react';
 
 export default function Remembrance() {
   return (
-    <div>
+    <div className="remembrance-color">
       <h1 className="remembrance">Remembrance</h1>
       <img src="https://64.media.tumblr.com/5e38bd5dfcda75c41c0f3c0d8a97a6f7/tumblr_o24yh5KzDm1rzt03ao7_r1_640.jpg" alt="remembrance" className="remPhoto" />
       <br />
