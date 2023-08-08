@@ -16,7 +16,7 @@ function ClassCard({ classObj, onUpdate }) {
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{classObj.class_name}</Card.Title>
-        <Card.Title>{classObj.description}</Card.Title>
+        <h6 className="class-card-descriptionTxt">{classObj.description}</h6>
         <Link href={`/classroom/${classObj.id}`} passHref>
           <Button variant="primary" className="m-2">
             VIEW
