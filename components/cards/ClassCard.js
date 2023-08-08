@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { BsFillTrash3Fill, BsFillPencilFill, BsFillEyeFill } from 'react-icons/bs';
 import { deleteSingleClassroom } from '../../utils/data/classroomData';
 
 function ClassCard({ classObj, onUpdate }) {
@@ -13,20 +15,21 @@ function ClassCard({ classObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card className="student-card" style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{classObj.class_name}</Card.Title>
-        <h6 className="class-card-descriptionTxt">{classObj.description}</h6>
         <Link href={`/classroom/${classObj.id}`} passHref>
           <Button variant="primary" className="m-2">
-            VIEW
+            <BsFillEyeFill />
           </Button>
         </Link>
         <Link href={`/classroom/edit/${classObj.id}`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button variant="info">
+            <BsFillPencilFill />
+          </Button>
         </Link>
         <Button variant="danger" onClick={deleteThisClass} className="m-2">
-          DELETE
+          <BsFillTrash3Fill />
         </Button>
       </Card.Body>
     </Card>
