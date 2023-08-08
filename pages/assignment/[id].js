@@ -8,13 +8,13 @@ export default function ViewAssignment() {
   const [assignmentDetails, setAssignmentDetails] = useState({});
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleAssignment(firebaseKey).then(setAssignmentDetails);
+    getSingleAssignment(id).then(setAssignmentDetails);
     console.warn(assignmentDetails);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firebaseKey]);
+  }, [id]);
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function ViewAssignment() {
           <h3>{assignmentDetails.title}</h3>
           <p>{assignmentDetails.content}</p>
           <br />
-          <Link href={`/assignment/edit/${assignmentDetails.firebaseKey}`} passHref>
+          <Link href={`/assignment/edit/${assignmentDetails.id}`} passHref>
             <Button variant="info">EDIT</Button>
           </Link>
         </div>

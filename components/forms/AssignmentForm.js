@@ -3,12 +3,11 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { createAssignment, updateAssignment } from '../../utils/data/assignmentData';
-import getClassrooms from '../../utils/data/classroomData';
+import { getClassrooms } from '../../utils/data/classroomData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   title: '',
-  imageUrl: '',
   content: '',
   teacherId: '',
   classId: 0,
@@ -28,10 +27,10 @@ function AssignmentForm({ obj }) {
         title: obj.title,
         content: obj.content,
         teacherId: user.uid,
-        classId: obj.classId?.id,
+        classId: obj.class_id?.id,
       });
     }
-  }, [obj]);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +48,7 @@ function AssignmentForm({ obj }) {
         title: currentAssignment.title,
         content: currentAssignment.content,
         teacherId: user.uid,
-        classId: currentAssignment.classId,
+        classId: Number(currentAssignment.classId),
       };
       updateAssignment(assignmentUpdate).then(() => router.push('/assignments'));
     } else {
@@ -58,7 +57,7 @@ function AssignmentForm({ obj }) {
         title: currentAssignment.title,
         content: currentAssignment.content,
         teacherId: user.uid,
-        classId: currentAssignment.classId,
+        classId: Number(currentAssignment.classId),
       };
       createAssignment(assignment).then(() => router.push('/assignments'));
     }
@@ -74,17 +73,6 @@ function AssignmentForm({ obj }) {
           placeholder="Enter an Assignment"
           name="title"
           value={currentAssignment.title}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <FloatingLabel controlId="floatingInput2" label="Assignment Image" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Enter an image url"
-          name="image_url"
-          value={currentAssignment.image_url}
           onChange={handleChange}
           required
         />
@@ -132,11 +120,14 @@ function AssignmentForm({ obj }) {
 AssignmentForm.propTypes = {
   obj: PropTypes.shape({
     title: PropTypes.string,
-    image_url: PropTypes.string,
     content: PropTypes.string,
-    id: PropTypes.string,
-    teacherId: PropTypes.number,
-    classId: PropTypes.number,
+    id: PropTypes.number,
+    teacher_id: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    class_id: PropTypes.shape({
+      id: PropTypes.number,
+    }),
   }),
 };
 

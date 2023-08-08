@@ -6,11 +6,11 @@ export default function ViewClass() {
   const [classDetails, setClassDetails] = useState([]);
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleClassroom(firebaseKey).then(setClassDetails);
-  }, [firebaseKey]);
+    getSingleClassroom(id).then(setClassDetails);
+  }, [id]);
   return (
     <>
       <div className="mt-5 d-flex flex-wrap">
