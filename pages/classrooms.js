@@ -15,7 +15,7 @@ export default function Classes() {
 
   useEffect(() => {
     getAllTheClasses();
-  }, [user]);
+  }, [user, getAllTheClasses]);
 
   return (
     <div className="text-center my-4">
