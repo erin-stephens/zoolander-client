@@ -7,7 +7,7 @@ import { deleteAssignment } from '../../utils/data/assignmentData';
 function AssignmentCard({ assignmentObj, onUpdate }) {
   const deleteThisAssignment = () => {
     if (window.confirm(`Delete ${assignmentObj.title}?`)) {
-      deleteAssignment(assignmentObj.firebaseKey).then(() => onUpdate());
+      deleteAssignment(assignmentObj.id).then(() => onUpdate());
     }
   };
 
@@ -17,10 +17,10 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{assignmentObj.title}</Card.Title>
         <br />
-        <Link href={`/assignment/${assignmentObj.firebaseKey}`} passHref>
+        <Link href={`/assignment/${assignmentObj.id}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`/assignment/edit/${assignmentObj.firebaseKey}`} passHref>
+        <Link href={`/assignment/edit/${assignmentObj.id}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisAssignment} className="m-2">
@@ -35,7 +35,7 @@ AssignmentCard.propTypes = {
   assignmentObj: PropTypes.shape({
     title: PropTypes.string,
     image_url: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
