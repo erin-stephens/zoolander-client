@@ -13,7 +13,6 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={assignmentObj.image_url} alt={assignmentObj.title} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{assignmentObj.title}</Card.Title>
         <br />
