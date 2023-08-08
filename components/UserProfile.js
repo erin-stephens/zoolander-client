@@ -35,19 +35,11 @@ export default function UserProfile() {
     top: '-60px',
   };
 
-  const profileLastLogin = {
-    position: 'relative',
-    fontSize: '10px',
-    color: 'grey',
-    top: '-10px',
-  };
-
   return (
     <div style={profileContainer}>
-      <img src={user.photoURL} alt="User" style={profileImage} />
-      <h1 style={profileName}>{user.displayName}</h1>
-      <h3 style={profileEmail}>{user.email}</h3>
-      <h4 style={profileLastLogin}>Last Login: {user.metadata.lastSignInTime}</h4>
+      <img src={user.fbUser.photoURL} alt="User" style={profileImage} />
+      <h1 style={profileName}>{user.fbUser.displayName}</h1>
+      <h3 style={profileEmail}>{user.fbUser.email}</h3>
     </div>
   );
 }
