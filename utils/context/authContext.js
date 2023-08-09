@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { checkUser } from '../auth';
+import { checkUser, registerUser } from '../auth';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -35,19 +35,33 @@ const AuthProvider = (props) => {
       if (fbUser) {
         setOAuthUser(fbUser);
         checkUser(fbUser.uid).then((gamerInfo) => {
-          let userObj = {};
-          if ('null' in gamerInfo) {
-            userObj = gamerInfo;
+          // If the user is not registered, automatically register them
+          if (!gamerInfo.uid) {
+            registerUser(fbUser)
+              .then((response) => {
+                if (response.success) {
+                  // Registration was successful
+                  const updatedUser = { fbUser, uid: fbUser.uid, ...response.data };
+                  setUser(updatedUser);
+                } else {
+                  // Handle registration failure
+                  console.error('User registration failed:', response.error);
+                }
+              })
+              .catch((error) => {
+                console.error('Error during user registration:', error);
+              });
           } else {
-            userObj = { fbUser, uid: fbUser.uid, ...gamerInfo };
+            // User is already registered, update the user context state
+            const userObj = { fbUser, uid: fbUser.uid, ...gamerInfo };
+            setUser(userObj);
           }
-          setUser(userObj);
         });
       } else {
         setOAuthUser(false);
         setUser(false);
       }
-    }); // creates a single global listener for auth state changed
+    });
   }, []);
 
   const value = useMemo(

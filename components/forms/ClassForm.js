@@ -84,9 +84,7 @@ ClassForm.propTypes = {
   obj: PropTypes.shape({
     description: PropTypes.string,
     class_name: PropTypes.string,
-    teacher_id: PropTypes.shape({
-      id: PropTypes.number,
-    }),
+    teacher_id: PropTypes.string,
     id: PropTypes.number,
   }),
 };

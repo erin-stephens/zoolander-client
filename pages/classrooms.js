@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
@@ -15,7 +16,7 @@ export default function Classes() {
 
   useEffect(() => {
     getAllTheClasses();
-  }, [user, getAllTheClasses]);
+  }, [user]);
 
   return (
     <div className="text-center my-4">
