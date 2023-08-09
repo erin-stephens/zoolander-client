@@ -62,10 +62,24 @@ const updateStudent = (student) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const addStudentToClass = (studentId, payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/students/${studentId}/addtoclass`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getStudents,
   deleteStudent,
   getSingleStudent,
   createStudent,
   updateStudent,
+  addStudentToClass,
 };
