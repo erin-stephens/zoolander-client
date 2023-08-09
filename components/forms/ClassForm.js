@@ -55,8 +55,7 @@ function ClassForm({ obj }) {
         description: currentClassroom.description,
         className: currentClassroom.className,
       };
-      createClassroom(classroom)
-        .then(() => router.push('/classrooms/'));
+      createClassroom(classroom).then(() => router.push('/classrooms/'));
     }
   };
 
