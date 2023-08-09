@@ -22,7 +22,7 @@ export default function AddToClass({ id, obj }) {
         studentId: obj.student_id,
       });
     }
-  }, [obj]);
+  }, [classrooms, obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap';
-import Link from 'next/link';
+import { Card } from 'react-bootstrap';
+// import Link from 'next/link';
 // import { deleteStudent } from '../../utils/data/studentData';
 
 function StudentClassCard({ studentClassObj }) {
@@ -36,7 +36,6 @@ StudentClassCard.propTypes = {
     student_full_name: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
 };
 
 export default StudentClassCard;
