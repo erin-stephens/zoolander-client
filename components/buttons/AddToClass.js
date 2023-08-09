@@ -5,21 +5,24 @@ import { addStudentToClass } from '../../utils/data/studentData';
 import { getClassrooms } from '../../utils/data/classroomData';
 
 const initialState = {
-  classId: 0,
+  classroom_id: 0,
 };
 
-export default function AddToClass({ id }) {
+export default function AddToClass({ id, obj }) {
   const [classrooms, setClassrooms] = useState([]);
-  const [getClassId, setGetClassId] = useState({});
   const [currentClass, setCurrentClass] = useState(initialState);
 
   useEffect(() => {
-    getClassrooms().then((data) => {
-      setClassrooms(data);
-      setGetClassId(data.id);
-      console.warn(data);
-    });
-  }, []);
+    getClassrooms().then(setClassrooms);
+    console.warn(classrooms);
+    if (obj.id) {
+      setCurrentClass({
+        id: obj.id,
+        classroomId: obj.classroom_id,
+        studentId: obj.student_id,
+      });
+    }
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +35,7 @@ export default function AddToClass({ id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
-      classId: Number(getClassId),
+      classroomId: Number(currentClass.classroomId),
       studentId: Number(id),
     };
     addStudentToClass(id, payload);
@@ -43,10 +46,10 @@ export default function AddToClass({ id }) {
       <FloatingLabel controlId="floatingSelect" label="Classroom">
         <Form.Select
           aria-label="Classroom"
-          name="classId"
+          name="classroomId"
           className="mb-3"
           onChange={handleChange}
-          value={currentClass.id}
+          value={currentClass.classroomId}
           required
         >
           <option value="">Select a Class</option>
@@ -69,4 +72,13 @@ export default function AddToClass({ id }) {
 
 AddToClass.propTypes = {
   id: PropTypes.number.isRequired,
+  obj: PropTypes.shape({
+    id: PropTypes.number,
+    classroom_id: PropTypes.number,
+    student_id: PropTypes.number,
+  }),
+};
+
+AddToClass.defaultProps = {
+  obj: initialState,
 };
