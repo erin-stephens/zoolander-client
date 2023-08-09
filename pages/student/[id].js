@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getSingleStudent } from '../../utils/data/studentData';
+import AddToClass from '../../components/buttons/AddToClass';
 
 export default function ViewStudent() {
   const [studentDetails, setStudentDetails] = useState([]);
@@ -26,6 +27,7 @@ export default function ViewStudent() {
           Age: {studentDetails.age}
         </div>
       </div>
+      <AddToClass id={id} />
     </>
   );
 }
