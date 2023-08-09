@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { addStudentToClass } from '../../utils/data/studentData';
 import { getClassrooms } from '../../utils/data/classroomData';
 
@@ -11,10 +12,10 @@ const initialState = {
 export default function AddToClass({ id, obj }) {
   const [classrooms, setClassrooms] = useState([]);
   const [currentClass, setCurrentClass] = useState(initialState);
+  const router = useRouter();
 
   useEffect(() => {
     getClassrooms().then(setClassrooms);
-    console.warn(classrooms);
     if (obj.id) {
       setCurrentClass({
         id: obj.id,
@@ -22,7 +23,7 @@ export default function AddToClass({ id, obj }) {
         studentId: obj.student_id,
       });
     }
-  }, [classrooms, obj]);
+  }, [obj, classrooms]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +39,7 @@ export default function AddToClass({ id, obj }) {
       classroomId: Number(currentClass.classroomId),
       studentId: Number(id),
     };
-    addStudentToClass(id, payload);
+    addStudentToClass(id, payload).then(() => router.push(`/classroom/${currentClass.classroomId}`));
   };
 
   return (

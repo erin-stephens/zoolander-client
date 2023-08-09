@@ -13,9 +13,9 @@ function StudentClassCard({ studentClassObj }) {
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }} className="student-card">
-      <Card.Img variant="top" src={studentClassObj.image_url} alt={studentClassObj.student_full_name} style={{ height: '200px' }} />
+      <Card.Img variant="top" src={studentClassObj.student.image_url} alt={studentClassObj.student.student_full_name} style={{ height: '200px' }} />
       <Card.Body>
-        <Card.Title>{studentClassObj.student_full_name}</Card.Title>
+        <Card.Title>{studentClassObj.student.student_full_name}</Card.Title>
         {/* <Link href={`/student/${studentClassObj.id}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
@@ -32,9 +32,11 @@ function StudentClassCard({ studentClassObj }) {
 
 StudentClassCard.propTypes = {
   studentClassObj: PropTypes.shape({
-    image_url: PropTypes.string.isRequired,
-    student_full_name: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
+    student: PropTypes.shape({
+      image_url: PropTypes.string.isRequired,
+      student_full_name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    }),
   }).isRequired,
 };
 
