@@ -71,5 +71,12 @@ const updateClassroom = (classroom) =>
       .catch(reject);
   });
 
+const getClassesStudents = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/classrooms/${id}/get_students`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 // eslint-disable-next-line object-curly-newline
-export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom, getClassrooms };
+export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom, getClassrooms, getClassesStudents };
