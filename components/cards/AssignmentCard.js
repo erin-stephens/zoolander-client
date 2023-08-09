@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BsFillTrash3Fill, BsFillPencilFill, BsFillEyeFill } from 'react-icons/bs';
 import { deleteAssignment } from '../../utils/data/assignmentData';
 
 function AssignmentCard({ assignmentObj, onUpdate }) {
@@ -17,13 +19,13 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
         <Card.Title>{assignmentObj.title}</Card.Title>
         <br />
         <Link href={`/assignment/${assignmentObj.id}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="m-2"><BsFillEyeFill /></Button>
         </Link>
         <Link href={`/assignment/edit/${assignmentObj.id}`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button variant="info"><BsFillPencilFill /></Button>
         </Link>
         <Button variant="danger" onClick={deleteThisAssignment} className="m-2">
-          DELETE
+          <BsFillTrash3Fill />
         </Button>
       </Card.Body>
     </Card>
