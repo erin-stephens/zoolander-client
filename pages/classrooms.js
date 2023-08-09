@@ -22,7 +22,7 @@ export default function Classes() {
       </Link>
       <div className="d-flex flex-wrap">
         {classrooms.map((classroom) => (
-          <ClassCard key={classroom.firebaseKey} classObj={classroom} onUpdate={getAllTheClasses} />
+          <ClassCard key={classroom.id} classObj={classroom} onUpdate={getAllTheClasses} />
         ))}
       </div>
     </div>

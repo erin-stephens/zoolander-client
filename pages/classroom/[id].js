@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getSingleClassroom, getClassesStudents } from '../../utils/data/classroomData';
-import ClassStudentCard from '../../components/cards/ClassStudentCard';
+import StudentClassCard from '../../components/cards/StudentClassCard';
 
 export default function ViewClass() {
   const [classDetails, setClassDetails] = useState([]);
-  const [classStudents, setClassStudents] = useState([]);
+  const [studentClasses, setStudentClasses] = useState([]);
   const router = useRouter();
 
   const { id } = router.query;
@@ -16,7 +16,7 @@ export default function ViewClass() {
 
   const getStudentsByClass = async () => {
     const students = await getClassesStudents(id);
-    setClassStudents(students);
+    setStudentClasses(students);
     console.warn(students);
   };
 
@@ -33,12 +33,12 @@ export default function ViewClass() {
         </div>
       </div>
       <div>
-        {classStudents.map((classStudent) => (
+        {studentClasses.map((studentClass) => (
           <section
-            key={`classStudent--${classStudent.id}`}
-            className="classStudents"
+            key={`studentClass--${studentClass.id}`}
+            className="studentClasses"
           >
-            <ClassStudentCard classStudentObj={classStudent} onUpdate={getStudentsByClass} />
+            <StudentClassCard studentClassObj={studentClass} onUpdate={getStudentsByClass} />
           </section>
         ))}
       </div>
