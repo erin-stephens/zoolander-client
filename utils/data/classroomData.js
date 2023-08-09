@@ -17,12 +17,13 @@ const createClassroom = (classroom) =>
       .catch(reject);
   });
 // GET CLASSES
-const getClassrooms = () =>
+const getClassrooms = (uid) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/classrooms`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `${uid}`,
       },
     })
       .then((response) => response.json())
