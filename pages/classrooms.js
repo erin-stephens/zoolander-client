@@ -11,7 +11,7 @@ export default function Classes() {
   const { user } = useAuth();
 
   const getAllTheClasses = () => {
-    getClassrooms(user.uid).then((data) => setClassroom(data));
+    getClassrooms().then((data) => setClassroom(data));
   };
 
   useEffect(() => {
