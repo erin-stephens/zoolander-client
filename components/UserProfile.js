@@ -7,10 +7,10 @@ export default function UserProfile() {
 
   return (
     <div className="userprofile-container">
-      <img src={user.photoURL} alt="User" className="userprofile-profileImage" />
-      <h1 className="userprofile-profileName">{user.displayName}</h1>
-      <h3 className="userprofile-profileEmail">{user.email}</h3>
-      <h4 className="userProfile-profileLastLogin">Last Login: {user.metadata.lastSignInTime}</h4>
+      <img src={user.fbUser.photoURL} alt="User" className="userprofile-profileImage" />
+      <h1 className="userprofile-profileName">{user.fbUser.displayName}</h1>
+      <h3 className="userprofile-profileEmail">{user.fbUser.email}</h3>
+      <h4 className="userProfile-profileLastLogin">Last Login: {user.fbUser.metadata.lastSignInTime}</h4>
     </div>
   );
 }
