@@ -75,6 +75,19 @@ const addStudentToClass = (studentId, payload) => new Promise((resolve, reject) 
     .catch(reject);
 });
 
+const removeStudentFromClass = (studentId, classroomId) => new Promise((resolve, reject) => {
+  const requestBody = JSON.stringify({ classroomId });
+  fetch(`${endpoint}/students/${studentId}/remove`, {
+    method: 'DELETE',
+    body: requestBody,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getStudents,
   deleteStudent,
@@ -82,4 +95,5 @@ export {
   createStudent,
   updateStudent,
   addStudentToClass,
+  removeStudentFromClass,
 };
