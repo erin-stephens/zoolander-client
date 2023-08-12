@@ -2,12 +2,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getSingleClassroom, getClassesStudents } from '../../utils/data/classroomData';
+import { getSingleClassroom, getClassesStudents, getAssignmentsByClassId } from '../../utils/data/classroomData';
 import StudentClassCard from '../../components/cards/StudentClassCard';
+import AssignmentCard from '../../components/cards/AssignmentCard';
 
 export default function ViewClass() {
   const [classDetails, setClassDetails] = useState([]);
   const [studentClasses, setStudentClasses] = useState([]);
+  const [classAssignments, setClassAssignments] = useState([]);
   const router = useRouter();
 
   const { id } = router.query;
@@ -22,8 +24,15 @@ export default function ViewClass() {
     console.warn(students);
   };
 
+  const getAssignmentsByClass = async () => {
+    const assignments = await getAssignmentsByClassId(id);
+    setClassAssignments(assignments);
+    console.warn(assignments);
+  };
+
   useEffect(() => {
     getStudentsByClass();
+    getAssignmentsByClass();
   }, [id]);
 
   return (
@@ -41,32 +50,51 @@ export default function ViewClass() {
           <h5>{classDetails.class_name}</h5>
           Description: {classDetails.description}
         </div>
-
-        <div>
+      </div>
+      <h3 style={{
+        backgroundColor: 'darkGreen',
+        color: 'white',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        marginTop: '10px',
+      }}
+      >
+        Students
+      </h3>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{
+          flex: 1, marginRight: '20px', display: 'flex', flexDirection: 'row', flexWrap: 'wrap',
+        }}
+        >
           {studentClasses.map((studentClass) => (
-            <section
-              key={`studentClass--${studentClass.id}`}
-              className="studentClasses"
-            >
+            <section key={`studentClass--${studentClass.id}`} className="studentClasses">
               <StudentClassCard studentClassObj={studentClass} onUpdate={getStudentsByClass} />
             </section>
           ))}
         </div>
       </div>
-      <div style={{
-        marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center',
+      <h3 style={{
+        backgroundColor: 'darkGreen',
+        color: 'white',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        marginTop: '10px',
       }}
       >
-        <img
-          src="https://images.prismic.io/prodigy-website/8f7bda1b-dbe9-4f13-b94f-cad24806715a_support-class-teacher.jpeg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&rect=0%2C818%2C5760%2C1920&w=1920&h=640"
-          alt="kids learning"
-          style={{
-            width: '65%',
-            height: 'auto',
-            borderRadius: '10px', // Round the border
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow
-          }}
-        />
+        Assignments
+      </h3>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        {/* Assignments */}
+        <div style={{
+          flex: 1, marginRight: '20px', display: 'flex', flexDirection: 'row', flexWrap: 'wrap',
+        }}
+        >
+          {classAssignments.map((classAssignment) => (
+            <section key={`classAssignment--${classAssignment.id}`} className="classAssignments">
+              <AssignmentCard assignmentObj={classAssignment} onUpdate={getAssignmentsByClass} />
+            </section>
+          ))}
+        </div>
       </div>
     </>
   );
