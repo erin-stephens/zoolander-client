@@ -18,8 +18,16 @@ export default function ViewAssignment() {
 
   return (
     <>
-      <div className="mt-5 d-flex flex-wrap">
-        <div className="d-flex flex-column">
+      <div
+        className="mt-5 d-flex flex-wrap"
+        style={{
+          backgroundImage: 'url(https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg)',
+          backgroundSize: '100% 100%', // Stretch both horizontally and vertically
+          backgroundPosition: 'center bottom', // Show the bottom edge
+          padding: '30px', // Add padding for better spacing
+        }}
+      >
+        <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={assignmentDetails.image_url} alt={assignmentDetails.title} style={{ width: '300px' }} />
         </div>

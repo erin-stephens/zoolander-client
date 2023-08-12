@@ -64,43 +64,45 @@ function AssignmentForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Assignment</h2>
+    <div className="mt-5">
+      <Form onSubmit={handleSubmit}>
+        <FloatingLabel controlId="floatingInput1" label="&nbsp;&nbsp;&nbsp;Assignment Title" className="mb-0">
+          <Form.Control
+            type="text"
+            placeholder="Enter an Assignment"
+            name="title"
+            value={currentAssignment.title}
+            onChange={handleChange}
+            required
+            className="custom-input"
+            style={{ color: 'white', paddingLeft: '30px' }}
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput1" label="Assignment Title" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter an Assignment"
-          name="title"
-          value={currentAssignment.title}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingTextarea" label="&nbsp;&nbsp;&nbsp;Content" className="mb-0">
+          <Form.Control
+            as="textarea"
+            className="custom-textarea-2"
+            placeholder="content"
+            style={{ height: '100px', color: 'white', paddingLeft: '30px' }}
+            name="content"
+            value={currentAssignment.content}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingTextarea" label="Content" className="mb-3">
-        <Form.Control
-          as="textarea"
-          placeholder="content"
-          style={{ height: '100px' }}
-          name="content"
-          value={currentAssignment.content}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <FloatingLabel controlId="floatingSelect" label="Classroom">
-        <Form.Select
-          aria-label="Classroom"
-          name="classId"
-          onChange={handleChange}
-          className="mb-3"
-          value={currentAssignment.classId}
-          required
-        >
-          <option value="">Select a Class</option>
-          {
+        <FloatingLabel controlId="floatingSelect" label="Classroom">
+          <Form.Select
+            aria-label="Classroom"
+            name="classId"
+            onChange={handleChange}
+            className="mb-0 custom-textarea"
+            value={currentAssignment.classId}
+            required
+          >
+            <option value="">Select a Class</option>
+            {
             classrooms.map((classroom) => (
               <option
                 key={classroom.id}
@@ -110,10 +112,11 @@ function AssignmentForm({ obj }) {
               </option>
             ))
           }
-        </Form.Select>
-      </FloatingLabel>
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Assignment</Button>
-    </Form>
+          </Form.Select>
+        </FloatingLabel>
+        <Button type="submit">{obj.id ? 'Update' : 'Create'} Assignment</Button>
+      </Form>
+    </div>
   );
 }
 

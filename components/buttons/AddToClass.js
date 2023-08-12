@@ -52,8 +52,18 @@ export default function AddToClass({ id, obj }) {
           onChange={handleChange}
           value={currentClass.classroomId}
           required
+          width="90%"
+          style={{
+            backgroundImage: 'url(https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            width: '102.8%',
+            marginLeft: '-30px',
+            color: 'white',
+          }}
         >
-          <option value="">Select a Class</option>
+          <option value="">&nbsp;&nbsp;&nbsp;Select a Class</option>
           {
         classrooms.map((classroom) => (
           <option
@@ -66,7 +76,9 @@ export default function AddToClass({ id, obj }) {
       }
         </Form.Select>
       </FloatingLabel>
-      <Button type="submit">Add To Class</Button>
+      <div style={{ paddingTop: '5px', paddingBottom: '30px' }}>
+        <Button type="submit">Add To Class</Button>
+      </div>
     </Form>
   );
 }

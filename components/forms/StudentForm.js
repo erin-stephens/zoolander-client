@@ -7,7 +7,6 @@ import { createStudent, updateStudent } from '../../utils/data/studentData';
 const initialState = {
   student_full_name: '',
   image_url: '',
-  age: '',
 };
 
 function StudentForm({ obj }) {
@@ -46,51 +45,58 @@ function StudentForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Student</h2>
+    <div className="mt-5">
+      <Form onSubmit={handleSubmit}>
+        <FloatingLabel controlId="floatingInput1" label="&nbsp;&nbsp;&nbsp;Student Name" className="mb-0">
+          <Form.Control
+            type="text"
+            placeholder="Enter Student Full Name"
+            name="studentFullName"
+            value={currentStudent.studentFullName}
+            onChange={handleChange}
+            required
+            className="custom-input"
+            style={{ color: 'white', paddingLeft: '30px' }}
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput1" label="Student Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter Student Full Name"
-          name="studentFullName"
-          value={currentStudent.studentFullName}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput2" label="&nbsp;&nbsp;&nbsp;Student Age" className="mb-0">
+          <Form.Control
+            type="number"
+            step="1"
+            className="custom-textarea-2"
+            placeholder="Enter Student Age"
+            name="age"
+            value={currentStudent.age}
+            onChange={handleChange}
+            required
+            style={{ color: 'white', paddingLeft: '30px' }}
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput2" label="Student Age" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter Student Age"
-          name="age"
-          value={currentStudent.age}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput3" label="&nbsp;&nbsp;&nbsp;Student Image" className="mb-0">
+          <Form.Control
+            type="url"
+            placeholder="Add Student image URL"
+            name="imageUrl"
+            value={currentStudent.imageUrl}
+            onChange={handleChange}
+            required
+            className="custom-textarea"
+            style={{ color: 'white', paddingLeft: '30px' }}
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput3" label="Student Image" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Add Student image URL"
-          name="imageUrl"
-          value={currentStudent.imageUrl}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Student</Button>
-    </Form>
+        <Button type="submit">{obj.id ? 'Update' : 'Create'} Student</Button>
+      </Form>
+    </div>
   );
 }
 
 StudentForm.propTypes = {
   obj: PropTypes.shape({
     student_full_name: PropTypes.string,
-    age: PropTypes.string,
+    age: PropTypes.number,
     image_url: PropTypes.string,
     id: PropTypes.number,
   }),
