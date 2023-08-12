@@ -12,7 +12,7 @@ function Home() {
         style={{
           height: '90vh',
           padding: '30px',
-          maxWidth: '900px',
+          maxWidth: '1000px',
           margin: '0 auto',
           display: 'flex', // Added display property
           alignItems: 'center', // Vertically align contents
