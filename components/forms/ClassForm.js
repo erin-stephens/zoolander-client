@@ -60,22 +60,41 @@ function ClassForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Class</h2>
+    <div className="mt-5">
+      <Form onSubmit={handleSubmit}>
 
-      {/* CLASS NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Class Name" className="mb-3">
-        <Form.Control type="text" placeholder="Enter Class Name" name="className" value={currentClassroom.className} onChange={handleChange} required />
-      </FloatingLabel>
+        {/* Combined CLASS NAME INPUT and DESCRIPTION TEXTAREA */}
+        <div className="d-flex flex-column">
+          <FloatingLabel controlId="floatingInput1" label="&nbsp;&nbsp;&nbsp;Class Name" className="mb-0">
+            <Form.Control
+              type="text"
+              placeholder="Enter Class Name"
+              name="className"
+              value={currentClassroom.className}
+              onChange={handleChange}
+              required
+              className="custom-input"
+              style={{ color: 'white', paddingLeft: '30px' }}
+            />
+          </FloatingLabel>
+          <FloatingLabel controlId="floatingTextarea" label="&nbsp;&nbsp;&nbsp;Description" className="mb-3">
+            <Form.Control
+              as="textarea"
+              className="custom-textarea"
+              placeholder="Description"
+              style={{ height: '100px', color: 'white', paddingLeft: '30px' }}
+              name="description"
+              value={currentClassroom.description}
+              onChange={handleChange}
+              required
+            />
+          </FloatingLabel>
+        </div>
 
-      {/* DESCRIPTION TEXTAREA  */}
-      <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
-        <Form.Control as="textarea" placeholder="Description" style={{ height: '100px' }} name="description" value={currentClassroom.description} onChange={handleChange} required />
-      </FloatingLabel>
-
-      {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Class</Button>
-    </Form>
+        {/* SUBMIT BUTTON  */}
+        <Button type="submit">{obj.id ? 'Update' : 'Create'} Class</Button>
+      </Form>
+    </div>
   );
 }
 

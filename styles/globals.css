@@ -1,11 +1,17 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 
 html,
 body {
+  background-image: url('https://static.vecteezy.com/system/resources/previews/011/005/174/original/creative-education-background-with-school-supplies-vector.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Fredericka the Great', cursive;
 }
 
 a {
@@ -30,15 +36,27 @@ body {
   width: 50%;
 }
 
-.student-card {
-  background-color: rgba(255, 255, 255, 0.1);
+.card-design {
+  background-image: url('https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg');
+  background-size: 100% 100%; /* Set background size to cover entire element */
+  background-position: center center;
   border: none;
+  color: white;
   box-shadow: 5px 5px 15px black;
 }
 
 .class-card-descriptionTxt {
   color: grey;
   font-size: 0.9rem;
+}
+
+.student-card {
+  background-image: url('https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg');
+  background-size: 100% 100%; /* Set background size to cover entire element */
+  background-position: center bottom;
+  border: none;
+  color: white;
+  box-shadow: 5px 5px 15px black;
 }
 
 .userprofile-container {
@@ -78,16 +96,61 @@ body {
   top: -10px;
 }
 
-.remembrance {
+.remContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .remPhoto {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  border-radius: 40px;
-  box-shadow: 10px 10px 25px black;
+  max-width: 50%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px black;
+  margin-left: 20px;
+}
+
+.remText {
+  padding: 20px;
+  text-align: center;
+}
+
+.custom-input {
+  background-image: url('https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  border: none; /* Remove border for a seamless look */
+  border-radius: 0; /* Remove border radius */
+  padding: 10px; /* Add padding for better visibility */
+  background-clip: padding-box; /* Clip background to padding box */
+  color: white;
+  padding-left: 30px;
+}
+
+.custom-textarea {
+  background-image: url('https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  border: none; /* Remove border for a seamless look */
+  border-radius: 0; /* Remove border radius */
+  background-clip: padding-box; /* Clip background to padding box */
+  color: white;
+  padding-left: 30px;
+  /* padding-bottom: 30px; */
+}
+
+.custom-textarea-2 {
+  background-image: url('https://img.freepik.com/free-photo/empty-blackboard_53876-16241.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none; /* Remove border for a seamless look */
+  border-radius: 0; /* Remove border radius */
+  padding: 10px; /* Add padding for better visibility */
+  background-clip: padding-box; /* Clip background to padding box */
+  color: white;
+  padding-left: 30px;
 }

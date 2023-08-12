@@ -14,8 +14,13 @@ function StudentCard({ studentObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }} className="student-card">
-      <Card.Img variant="top" src={studentObj.image_url} alt={studentObj.student_full_name} style={{ height: '400px' }} />
+    <Card style={{ width: '18rem', padding: '7px 5px', margin: '10px' }} className="card-design">
+      <Card.Img
+        variant="top"
+        src={studentObj.image_url}
+        alt={studentObj.student_full_name}
+        style={{ height: '20vh', width: '100%', objectFit: 'cover' }}
+      />
       <Card.Body>
         <Card.Title>{studentObj.student_full_name}</Card.Title>
         <Link href={`/student/${studentObj.id}`} passHref>

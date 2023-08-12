@@ -78,5 +78,17 @@ const getClassesStudents = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAssignmentsByClassId = (classId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/assignments?classId=${classId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 // eslint-disable-next-line object-curly-newline
-export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom, getClassrooms, getClassesStudents };
+export { createClassroom, getSingleClassroom, deleteSingleClassroom, updateClassroom, getClassrooms, getClassesStudents, getAssignmentsByClassId };

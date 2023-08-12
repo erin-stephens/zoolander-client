@@ -14,7 +14,7 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card className="card-design" style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{assignmentObj.title}</Card.Title>
         <br />

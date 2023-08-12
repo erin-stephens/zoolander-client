@@ -15,7 +15,7 @@ function ClassCard({ classObj, onUpdate }) {
   };
 
   return (
-    <Card className="student-card" style={{ width: '18rem', margin: '10px' }}>
+    <Card className="card-design" style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{classObj.class_name}</Card.Title>
         <Link href={`/classroom/${classObj.id}`} passHref>

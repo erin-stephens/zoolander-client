@@ -16,18 +16,25 @@ export default function ViewStudent() {
 
   return (
     <>
-      <div className="mt-5 d-flex flex-wrap">
+      <div
+        className="mt-5 d-flex flex-wrap custom-input"
+      >
         <div className="d-flex flex-column">
-          <img src={studentDetails.image_url} alt={studentDetails.student_full_name} style={{ width: '300px' }} />
+          <img src={studentDetails.image_url} alt={studentDetails.student_full_name} style={{ width: '200px', paddingTop: '10px' }} />
         </div>
-        <div className="text-white ms-5 details">
+        <div
+          className="text-white ms-5 details"
+          style={{ paddingTop: '10px' }}
+        >
           <h5>
             {studentDetails.student_full_name}
           </h5>
           Age: {studentDetails.age}
         </div>
       </div>
-      <AddToClass id={id} />
+      <div className="custom-textarea">
+        <AddToClass id={id} />
+      </div>
     </>
   );
 }
